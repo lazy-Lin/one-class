@@ -24,13 +24,17 @@ class PipelineConfig:
     knn_k: int = 5
     threshold_quantile: float = 0.995
     device: str | None = None
+    pretrained_weights: str | None = None
 
 
 class OneClassFaissPipeline:
     def __init__(self, config: PipelineConfig) -> None:
         self.config = config
         self.device = resolve_device(config.device)
-        self.model = FeatureExtractor(backbone=config.backbone).to(self.device).eval()
+        self.model = FeatureExtractor(
+            backbone=config.backbone,
+            pretrained_weights=config.pretrained_weights
+        ).to(self.device).eval()
 
     def run(self) -> dict[str, float | str | int]:
         train_paths = list_images(Path(self.config.train_dir))

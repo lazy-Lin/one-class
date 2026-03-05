@@ -5,3 +5,5 @@ artifacts/
 data/
 
 datasets/
+model.safetensors
+*.pth

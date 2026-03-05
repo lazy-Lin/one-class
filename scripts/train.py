@@ -23,6 +23,7 @@ def main() -> None:
         knn_k=CONFIG.knn_k,
         threshold_quantile=CONFIG.threshold_quantile,
         device=CONFIG.device,
+        pretrained_weights=CONFIG.pretrained_weights,
     )
     metrics = OneClassFaissPipeline(config).run()
     print(json.dumps(metrics, ensure_ascii=False, indent=2))

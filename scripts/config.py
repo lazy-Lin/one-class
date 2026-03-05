@@ -13,6 +13,7 @@ class TrainConfig:
     knn_k: int = 5
     threshold_quantile: float = 0.995
     device: str | None = None
+    pretrained_weights: str | None = None
 
 
 CONFIG = TrainConfig()
